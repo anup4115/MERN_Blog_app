@@ -23,7 +23,7 @@ class userController{
         try{
             const {email,password} = req.body 
             if(!email || !password){
-                return res.status(400).json({status:false,mmessage:"All Fields are required"})
+                return res.status(400).json({status:false,message:"All Fields are required"})
             }
             const existingUser=await userModel.findOne({email})
             if(!existingUser){

@@ -28,7 +28,7 @@ class blogController{
     }
     static get_all_blogs=async(req,res)=>{
         try{
-            const allBlogs=await blogModel.find({})
+            const allBlogs=await blogModel.find({}).populate("user")
             if(!allBlogs){
                 return res.status(404).json({status:"failed",message:"No Blogs Found"})
             }
@@ -54,7 +54,7 @@ class blogController{
             if(!blog){
                 return res.status(404).json({status:"failed",message:"Blog Not Found"})
             }
-            return res.status(200).json({status:"success",Blog:blog})
+            return res.status(200).json({status:"success",blog:blog})
         }catch(error){
             console.log(error)
         }
